@@ -25,5 +25,9 @@ class ProductsImport < ApplicationRecord
     event :finish_process_with_errors do
       transitions :from => :processing, :to => :processed_with_errors
     end
+
+    event :finish_with_errors do
+      transitions :from => :waiting_for_process, :to => :processed_with_errors
+    end
   end
 end

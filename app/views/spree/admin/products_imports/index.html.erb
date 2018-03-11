@@ -1,0 +1,26 @@
+<%= form_for @products_imports.new, url: [:admin, :products_imports] do |f| %>
+  <%= f.file_field :import %>
+  <%= f.submit %>
+<% end %>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>Errors</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products_imports.each do |products_import| %>
+      <tr>
+        <td><%= products_import.state %></td>
+        <td>
+          <% if products_import.processed_with_errors? %>
+            <%= simple_format(products_import.errored_rows) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
