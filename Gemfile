@@ -28,6 +28,18 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# redis as caching service
+gem 'redis-rails', '~> 5.0.2'
+
+# setup sidekiq
+gem 'sidekiq', '~> 5.0.5'
+
+# state machine
+gem 'aasm', '~> 4.12.0'
+
+# file attachment library
+gem 'paperclip', '~> 5.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -38,6 +50,22 @@ gem 'spree_gateway', '~> 3.3'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.7'
+  # debugging
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-stack_explorer'
+  # manage env variables in development
+  gem 'dotenv-rails'
+end
+
+group :test do
+  # nice rspec output
+  gem 'fuubar'
+  # generate factories for specs
+  gem 'factory_bot_rails'
+  # clean database before each test suit
+  gem 'database_cleaner'
 end
 
 group :development do
